@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Figma__get_design_context",
+      "mcp__claude_ai_Figma__get_metadata",
+      "Skill(run)",
+      "Bash(python3 -m http.server 8743 --directory .)",
+      "Bash(echo \"server pid: $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8743/)",
+      "Bash(npx --yes playwright@latest screenshot --browser chromium --full-page \"http://localhost:8743/\" /tmp/kp-screenshot.png)",
+      "Bash(npx playwright *)",
+      "Bash(node *)",
+      "mcp__claude_ai_Figma__get_screenshot",
+      "Bash(open *)",
+      "Bash(xxd)"
+    ]
+  }
+}

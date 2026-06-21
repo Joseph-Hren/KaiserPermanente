@@ -1,0 +1,14 @@
+<svg width="78" height="32" viewBox="0 0 78 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="77" height="31" rx="9.5" fill="#0078B3" stroke="#0078B3"/>
+<path d="M10 0.5H38.5V31.5H10C4.7533 31.5 0.5 27.2467 0.5 22V10C0.5 4.7533 4.7533 0.5 10 0.5Z" fill="#E6F2F7" stroke="#0078B3"/>
+<rect x="8" y="7" width="7" height="7" rx="2" fill="#0078B3"/>
+<rect x="8" y="17" width="7" height="7" rx="2" fill="#0078B3"/>
+<rect x="17" y="7" width="7" height="7" rx="2" fill="#0078B3"/>
+<rect x="17" y="17" width="7" height="7" rx="2" fill="#0078B3"/>
+<rect x="26" y="7" width="7" height="7" rx="2" fill="#0078B3"/>
+<rect x="26" y="17" width="7" height="7" rx="2" fill="#0078B3"/>
+<line x1="48" y1="9" x2="68" y2="9" stroke="#E6F2F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="48" y1="13" x2="68" y2="13" stroke="#E6F2F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="48" y1="17" x2="68" y2="17" stroke="#E6F2F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="48" y1="21" x2="68" y2="21" stroke="#E6F2F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claims Summary — Kaiser Permanente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Site header: logo + greeting -->
+  <header class="site-header">
+    <div class="header-inner">
+      <img src="assets/KPlogo.png" alt="Kaiser Permanente" class="kp-logo">
+      <img src="assets/KPlogoMobile.png" alt="Kaiser Permanente" class="kp-logo-mobile">
+      <div class="header-right">
+        <div class="header-greeting">
+          <span class="greeting-text">Hello Eliza</span>
+          <svg class="chevron-down" width="10" height="6" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1L5 5L9 1" stroke="#0d1c3d" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Primary navigation -->
+  <nav class="top-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <button class="nav-hamburger" aria-label="Open navigation menu">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+          <line x1="0" y1="1.25" x2="22" y2="1.25" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="0" y1="8" x2="22" y2="8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="0" y1="14.75" x2="22" y2="14.75" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <span class="nav-coverage-mobile">Coverage &amp; Costs</span>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link">My Health</a></li>
+        <li><a href="#" class="nav-link">Medical Record</a></li>
+        <li><a href="#" class="nav-link">Message Center</a></li>
+        <li><a href="#" class="nav-link">Appointments</a></li>
+        <li><a href="#" class="nav-link">Pharmacy</a></li>
+        <li><a href="#" class="nav-link nav-link--selected">Coverage &amp; Costs</a></li>
+        <li><a href="#" class="nav-link">Health &amp; Wellness</a></li>
+      </ul>
+      <div class="nav-search">
+        <svg width="23" height="21" viewBox="0 0 23 21" fill="none" class="search-icon" aria-label="Search">
+          <circle cx="9" cy="9" r="8" stroke="white" stroke-width="2"/>
+          <line x1="15" y1="15" x2="22" y2="20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main page content -->
+  <main class="main-content">
+    <div class="content-inner">
+
+      <!-- Sub-header row: profile badge + member info -->
+      <div class="sub-header-row">
+        <div class="profile-badge">
+          <img src="assets/profile.svg" alt="" class="profile-icon">
+          <span class="profile-name">Eliza Martinez</span>
+          <svg class="chevron-down-sm" width="10" height="6" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1L5 5L9 1" stroke="#0078b3" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="member-links">
+          <a href="#" class="member-link">Member info</a>
+          <span class="member-link-divider">|</span>
+          <a href="#" class="member-link">Help</a>
+        </div>
+      </div>
+
+      <!-- Page title -->
+      <h1 class="page-title">Claims Summary</h1>
+
+      <!-- Recent claims activity -->
+      <section class="recent-activity">
+        <h2 class="section-title">Recent claims activity</h2>
+        <div class="activity-row">
+          <div class="activity-cards" id="activity-cards"></div>
+          <button class="chevron-btn" aria-label="See more activity">
+            <svg width="11" height="19" viewBox="0 0 11 19" fill="none">
+              <path d="M1 1L9.765 9.383L1 17.765" stroke="#0078b3" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- All claims -->
+      <section class="all-claims">
+        <div class="all-claims-header">
+          <h2 class="section-title">All claims</h2>
+          <div class="view-toggle" id="view-toggle">
+            <span class="view-toggle-label view-toggle-label--active" id="label-card">Card view</span>
+            <button class="view-toggle-btn" id="view-toggle-btn" aria-label="Switch view">
+              <div class="toggle-icon-stack">
+                <img src="assets/view-list.svg" class="toggle-icon toggle-icon--other" alt="" width="78" height="32">
+                <img src="assets/view-card.svg" class="toggle-icon toggle-icon--current" id="toggle-icon-current" alt="Card view selected" width="78" height="32">
+              </div>
+            </button>
+            <span class="view-toggle-label" id="label-list">List view</span>
+          </div>
+        </div>
+
+        <div class="claims-grid" id="claims-grid"></div>
+        <div class="claims-list" id="claims-list"></div>
+
+        <div class="pagination" id="pagination"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer (truncated) -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p class="footer-heading">Find care</p>
+        <a href="#" class="footer-link">Get Care</a>
+        <a href="#" class="footer-link">Find Doctors &amp; Locations</a>
+        <a href="#" class="footer-link">Health Classes</a>
+        <a href="#" class="footer-link">Care When Travelling</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Our organization</p>
+        <a href="#" class="footer-link">About KP</a>
+        <a href="#" class="footer-link">News &amp; Views</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Media Inquiries</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Member support</p>
+        <a href="#" class="footer-link">New Member Welcome</a>
+        <a href="#" class="footer-link">Forms &amp; Publications</a>
+        <a href="#" class="footer-link">Member Services</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Visit our other sites</p>
+        <a href="#" class="footer-link">Individual &amp; Family Plans</a>
+        <a href="#" class="footer-link">Medicare</a>
+        <a href="#" class="footer-link">For Businesses</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p class="footer-legal-text">© 2020–2021 Kaiser Foundation Health Plan, Inc.</p>
+    </div>
+  </footer>
+
+  <!-- Overlay (populated by app.js) -->
+  <div class="overlay-backdrop" id="overlay-backdrop" aria-hidden="true">
+    <div class="overlay-panel" id="overlay-panel" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="overlay-content" id="overlay-content"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

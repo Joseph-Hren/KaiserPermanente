@@ -1,0 +1,1428 @@
+/* ─── Design tokens ─────────────────────────────────────────────────────── */
+:root {
+  --text-primary: #0d1c3d;
+  --text-secondary: #4c556a;
+  --text-reverse: #ffffff;
+  --text-link: #0078b3;
+  --background-strokes-neutral: #ffffff;
+  --background-strokes-light-grey: #f5f5f5;
+  --background-strokes-grey: #f7f7f7;
+  --background-strokes-dark: #ebebeb;
+  --background-strokes-card-stroke: #d0d0d0;
+  --background-strokes-blue: #0078b3;
+  --colors-green-background: #e1f4d4;
+  --colors-green-border: #4cb20e;
+  --colors-green-text: #1f5000;
+  --colors-red-background: #f7cece;
+  --colors-red-border: #e50909;
+  --colors-red-text: #560000;
+  --colors-amber-text: #644500;
+  --colors-amber-border: #efa403;
+  --colors-amber-background: #fff4d2;
+  --colors-blue-background: #e6f2f7;
+  --colors-blue-border: #0078b3;
+  --colors-blue-text: #002b40;
+  --kp-blue-nav: #0078b3;
+}
+
+/* ─── Reset / base ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--background-strokes-dark);
+  min-width: 1280px;
+}
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { list-style: none; }
+button { cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; }
+
+/* ─── Site header ────────────────────────────────────────────────────────── */
+.site-header {
+  background: var(--background-strokes-neutral);
+}
+
+.header-inner {
+  max-width: 1724px;
+  margin: 0 auto;
+  padding: 18px 90px 12px 101px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.kp-logo {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.kp-logo-mobile {
+  display: none;
+  height: 36px;
+  width: auto;
+}
+
+.header-greeting {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.greeting-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.chevron-down { display: block; flex-shrink: 0; }
+
+/* ─── Top navigation ─────────────────────────────────────────────────────── */
+.top-nav {
+  background: var(--kp-blue-nav);
+}
+
+.nav-inner {
+  max-width: 1724px;
+  margin: 0 auto;
+  padding: 0 90px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+/* Nav links: gap of 55px between each item, matching Figma wide breakpoint */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 55px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-reverse);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.nav-link:hover { opacity: 0.85; text-decoration: none; }
+
+.nav-link--selected {
+  font-weight: 600;
+  border-bottom: 2px solid var(--text-reverse);
+  padding-bottom: 8px;
+}
+
+.nav-search {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon { display: block; }
+
+.nav-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 4px;
+}
+
+.nav-coverage-mobile {
+  display: none;
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-reverse);
+}
+
+/* ─── Main content wrapper ───────────────────────────────────────────────── */
+.main-content {
+  background: var(--background-strokes-neutral);
+  padding-bottom: 72px;
+}
+
+/* Left: 101px, Right: 90px — matches Figma page insets exactly.
+   This makes the content area 1533px wide (= 4×360 + 3×31 grid). */
+.content-inner {
+  max-width: 1724px;
+  margin: 0 auto;
+  padding: 0 90px 0 101px;
+}
+
+/* ─── Sub-header row ─────────────────────────────────────────────────────── */
+.sub-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--colors-blue-border);
+  border-radius: 20px;
+  background: var(--colors-blue-background);
+  cursor: pointer;
+}
+
+.profile-icon {
+  display: block;
+  width: 60px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.profile-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--colors-blue-text);
+  white-space: nowrap;
+}
+
+.chevron-down-sm { display: block; flex-shrink: 0; }
+
+.member-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.member-link {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-link);
+}
+
+.member-link-divider {
+  color: var(--background-strokes-card-stroke);
+}
+
+/* ─── Page title ─────────────────────────────────────────────────────────── */
+.page-title {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 38px;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+/* ─── Section titles ─────────────────────────────────────────────────────── */
+.section-title {
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+/* ─── Recent activity ────────────────────────────────────────────────────── */
+.recent-activity {
+  margin-bottom: 40px;
+}
+
+.activity-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Constrain the row to the grid width so the chevron doesn't overhang */
+  width: fit-content;
+  max-width: 100%;
+}
+
+/* gap: 17px is the exact value that fits 4×360px cards + 30px chevron
+   within the 1533px content-inner width (4×360 + 3×17 + 12 + 30 = 1533).
+   No overflow: hidden — shadows on child cards need to bleed out. */
+.activity-cards {
+  display: flex;
+  gap: 17px;
+}
+
+.activity-card {
+  width: 360px;
+  flex-shrink: 0;
+  height: 93px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  background: var(--background-strokes-neutral);
+  border: 1px solid var(--background-strokes-card-stroke);
+  border-radius: 16px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.activity-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-color: var(--colors-blue-border);
+}
+
+.activity-card-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-card-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 20px;
+  margin-bottom: 2px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.activity-card-link {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-link);
+  text-decoration: underline;
+}
+
+.chevron-btn {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-strokes-grey);
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+
+.chevron-btn:hover {
+  background: var(--colors-blue-background);
+}
+
+/* ─── All claims header ──────────────────────────────────────────────────── */
+.all-claims-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Match the claims grid width exactly (4×360 + 3×31 = 1533px = content-inner width) */
+  width: 100%;
+}
+
+.all-claims-header .section-title {
+  margin-bottom: 0;
+}
+
+.view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.view-toggle-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-link);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.view-toggle-label--active {
+  color: var(--text-primary);
+  cursor: default;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle-icon-stack {
+  position: relative;
+  width: 78px;
+  height: 32px;
+}
+
+.toggle-icon--other {
+  display: block;
+  width: 78px;
+  height: 32px;
+}
+
+.toggle-icon--current {
+  position: absolute;
+  inset: 0;
+  width: 78px;
+  height: 32px;
+  opacity: 1;
+  transition: opacity 0.35s;
+}
+
+/* Hovering anywhere on the toggle (icon or either label) fades the icon preview */
+.view-toggle:hover .toggle-icon--current {
+  opacity: 0;
+}
+
+/* ─── Claims grid ────────────────────────────────────────────────────────── */
+.claims-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 360px);
+  gap: 31px;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+/* ─── Claim card ─────────────────────────────────────────────────────────── */
+.claim-card {
+  width: 360px;
+  height: 300px;
+  padding: 16px 16px 18px;
+  background: var(--background-strokes-neutral);
+  border: 1px solid var(--background-strokes-card-stroke);
+  border-radius: 12px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.claim-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-color: var(--colors-blue-border);
+}
+
+/* Claim state row */
+.claim-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ─── Badges ─────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 24px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.badge-icon svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+/* Pending */
+.badge--pending {
+  background: var(--background-strokes-neutral);
+  border-color: var(--colors-blue-border);
+  color: var(--text-primary);
+}
+
+/* Approved */
+.badge--approved {
+  background: var(--colors-blue-background);
+  border-color: var(--colors-blue-border);
+  color: var(--colors-blue-text);
+}
+
+/* Denied */
+.badge--denied {
+  background: var(--colors-red-background);
+  border-color: var(--colors-red-border);
+  color: var(--colors-red-text);
+}
+
+/* Payment resolved */
+.badge--payment-resolved {
+  background: var(--colors-green-background);
+  border-color: var(--colors-green-border);
+  color: var(--colors-green-text);
+}
+
+/* Needs payment */
+.badge--needs-payment {
+  background: var(--colors-amber-background);
+  border-color: var(--colors-amber-border);
+  color: var(--colors-amber-text);
+}
+
+/* ─── Your share ─────────────────────────────────────────────────────────── */
+.your-share { flex-shrink: 0; }
+
+.field-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+
+.your-share .amount {
+  display: block;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+/* ─── Service date ───────────────────────────────────────────────────────── */
+.service-date { flex-shrink: 0; }
+
+.service-date .date-value {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ─── Care received ──────────────────────────────────────────────────────── */
+.care-received {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.care-item {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.33;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.care-more {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-link);
+  line-height: 1.5;
+}
+
+/* ─── View claim details link ────────────────────────────────────────────── */
+.view-details {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-link);
+  text-decoration: underline;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+/* ─── Pagination ─────────────────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  margin-bottom: 60px;
+  /* Constrained to grid width by content-inner; no extra width needed */
+  width: 100%;
+}
+
+.pagination-count {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--text-secondary);
+  transition: background 0.15s;
+}
+
+.page-btn:not(.page-btn--active) {
+  border: none;
+  color: var(--text-link);
+  font-weight: 400;
+  background: var(--background-strokes-grey);
+}
+
+.page-btn:not(.page-btn--active):hover {
+  background: var(--colors-blue-background);
+}
+
+.pagination-arrow {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: var(--background-strokes-grey);
+  color: var(--text-secondary);
+  transition: background 0.15s, color 0.15s;
+}
+
+.pagination-arrow:not(:disabled):hover {
+  background: var(--colors-blue-background);
+  color: var(--text-link);
+}
+
+.pagination-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+/* ─── Claims list (table view) ───────────────────────────────────────────── */
+.claims-list {
+  margin-top: 20px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.claims-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* Column order: date | care | share | status | claim# | action */
+.table-th--date    { width: 11%; }
+/* care received: fills remaining space */
+.table-th--share   { width: 12%; }
+.table-th--status  { width: 23%; }
+.table-th--claim   { width: 10%; }
+.table-th--action  { width: 13%; }
+
+.table-th {
+  padding: 0 16px 12px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--background-strokes-dark);
+  white-space: nowrap;
+}
+
+/* Sort chevron — decorative only until sorting is wired */
+.table-sort-chevron {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 5px;
+  vertical-align: middle;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.claim-row { cursor: pointer; }
+
+.claim-row td {
+  padding: 18px 16px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--background-strokes-dark);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: background 0.15s;
+}
+
+.claim-row:hover td { background: var(--colors-blue-background); }
+
+/* Status cell: allow badges to wrap if two are long; nudge up to optically
+   align with the first line of text in adjacent cells */
+.claim-row .claim-state { flex-wrap: wrap; gap: 6px; margin-top: -7px; }
+
+/* Amount — same size/weight as rest of table */
+.table-amount {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.table-amount--pending {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Care received in table */
+.table-care-first {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.table-care-extra { margin-top: 4px; }
+
+.table-care-extra-item {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.table-care-toggle {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-link);
+  cursor: pointer;
+  text-align: left;
+}
+
+.table-care-toggle:hover { text-decoration: underline; }
+
+/* Action cell — link, no underline ever */
+.table-cell--action .view-details {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.table-cell--action .view-details:hover { text-decoration: none; }
+
+/* ─── Responsive breakpoints ─────────────────────────────────────────────── */
+
+/* 3 cards per row — kicks in below the exact 4-card minimum (4×360+3×31+191=1724px) */
+@media (max-width: 1723px) {
+  body { min-width: 1262px; }
+
+  .header-inner { padding: 18px 60px 12px 60px; }
+
+  .nav-inner { padding: 0 60px; }
+  .nav-links { gap: 24px; }
+
+  /* max-width = 3-col grid (1142px) + 60px padding each side = 1262px.
+     Combined with margin: 0 auto on content-inner, this centers all page
+     content over the grid at every viewport width in this range. */
+  .content-inner {
+    padding: 0 60px;
+    max-width: 1262px;
+  }
+
+  /* 3×360 + 2×31 = 1142px grid */
+  .claims-grid { grid-template-columns: repeat(3, 360px); }
+
+  /* 4th activity card hidden; gap 10px → 3×360+2×10+12+30 = 1142px (matches grid) */
+  .activity-card:nth-child(n+4) { display: none; }
+  .activity-cards { gap: 10px; }
+
+  .footer-inner { padding: 40px 60px 30px; }
+  .footer-legal { padding: 20px 60px 30px; }
+}
+
+/* 2 cards per row — kicks in below the 3-card minimum (3×360+2×31+120=1262px) */
+@media (max-width: 1261px) {
+  body { min-width: 831px; }
+
+  .header-inner { padding: 18px 40px 12px 40px; }
+
+  .nav-inner { padding: 0 40px; }
+  /* Font size reduction is necessary here — at ≤1261px the nav otherwise
+     overflows at minimum content width (831px) */
+  .nav-links { gap: 8px; }
+  .nav-link { font-size: 14px; padding: 6px; }
+
+  /* max-width = 2-col grid (751px) + 40px padding each side = 831px */
+  .content-inner {
+    padding: 0 40px;
+    max-width: 831px;
+  }
+
+  /* 2×360 + 1×31 = 751px grid */
+  .claims-grid { grid-template-columns: repeat(2, 360px); }
+
+  /* 2 activity cards + chevron: row fills 751px, cards flex to share remaining space */
+  .activity-card:nth-child(n+3) { display: none; }
+  .activity-row { width: 100%; }
+  .activity-cards { gap: 10px; flex: 1; }
+  .activity-card { flex-shrink: 1; }
+
+  .footer-inner { padding: 40px 40px 30px; }
+  .footer-legal { padding: 20px 40px 30px; }
+}
+
+/* Mobile: 390px content, centered. At viewports > 390px, blank space on sides.
+   Overrides both the 3-col and 2-col breakpoints above.                       */
+@media (max-width: 830px) {
+  body { min-width: 320px; }
+
+  /* ── Header ──────────────────────────────────────────────────────────────── */
+  .header-inner { padding: 12px 20px; }
+  .kp-logo { display: none; }
+  .kp-logo-mobile { display: block; }
+
+  /* ── Nav: hamburger layout ───────────────────────────────────────────────── */
+  .nav-inner { padding: 0 20px; gap: 0; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-coverage-mobile { display: block; }
+  .nav-search { margin-left: 0; }
+
+  /* ── Content: 390px centered, 20px side padding → 350px live area ───────── */
+  .content-inner { max-width: 390px; padding: 0 20px; }
+
+  /* ── Profile badge: keep visible, hide member info links ────────────────── */
+  .sub-header-row { display: flex; justify-content: flex-start; padding-top: 14px; padding-bottom: 4px; }
+  .member-links { display: none; }
+
+  /* ── Typography scale ────────────────────────────────────────────────────── */
+  .page-title { font-size: 30px; }
+  .section-title { font-size: 20px; }
+
+  /* ── Recent activity: 1 card + chevron ───────────────────────────────────── */
+  .activity-row { width: 100%; }
+  .activity-cards { flex: 1; min-width: 0; gap: 0; }
+  .activity-card:nth-child(n+2) { display: none; }
+  .activity-card { width: auto; height: auto; min-height: 76px; flex-shrink: 1; }
+  .chevron-btn { display: flex; } /* re-show — was hidden in 2-col breakpoint */
+
+  /* ── All claims: card-only, hide view toggle ─────────────────────────────── */
+  .all-claims-header { margin-bottom: 4px; }
+  .view-toggle { display: none; }
+
+  /* ── Claims grid: single fluid column; list view never shown on mobile ────── */
+  .claims-grid { grid-template-columns: 1fr; gap: 16px; }
+  .claim-card { width: 100%; height: auto; min-height: 0; }
+  #claims-list { display: none !important; }
+
+  /* ── Pagination: compact mobile sizing ──────────────────────────────────── */
+  .pagination-pages { gap: 8px; }
+  .pagination-controls { gap: 8px; }
+  .page-btn { width: 26px; height: 26px; font-size: 12px; border-radius: 13px; }
+  .pagination-ellipsis { width: 26px; height: 26px; font-size: 12px; }
+  .pagination-arrow { width: 26px; height: 26px; border-radius: 13px; }
+  .pagination-arrow svg { width: 9px; height: 17px; }
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--background-strokes-dark);
+}
+
+.footer-inner {
+  max-width: 1724px;
+  margin: 0 auto;
+  padding: 40px 162px 30px;
+  display: flex;
+  gap: 60px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.footer-heading {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 24px;
+}
+
+.footer-link {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-link);
+  line-height: 16px;
+}
+
+.footer-legal {
+  max-width: 1724px;
+  margin: 0 auto;
+  padding: 20px 162px 30px;
+  border-top: 1px solid var(--background-strokes-card-stroke);
+}
+
+.footer-legal-text {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+/* ─── Overlay ────────────────────────────────────────────────────────────── */
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 200;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 40px 20px 60px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s;
+}
+
+.overlay-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 800px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 24px 80px rgba(0, 0, 0, 0.18);
+  transform: translateY(10px);
+  transition: transform 0.22s ease;
+}
+
+.overlay-backdrop.is-open .overlay-panel { transform: translateY(0); }
+
+/* ─── Top bar: claim # + badges + × Close ─── */
+.ov-topbar {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 25px;
+  gap: 12px;
+  background: var(--background-strokes-grey);
+  border-bottom: 2px solid var(--background-strokes-dark);
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+}
+
+.ov-topbar-spacer {
+  flex: 1;
+  order: 3;
+}
+
+.ov-topbar-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  order: 2;
+}
+
+.ov-claim-num {
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--text-primary);
+  white-space: nowrap;
+  order: 1;
+}
+
+.ov-close-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transform: translateY(-4px);
+  order: 4;
+}
+
+.ov-close-x {
+  font-size: 44px;
+  line-height: 1;
+  color: var(--text-primary);
+  font-weight: 200;
+}
+
+.ov-close-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-link);
+  font-family: Montserrat, sans-serif;
+  line-height: 1;
+  margin-top: -8px;
+}
+
+/* ─── Full-width section rules ─── */
+.ov-rule {
+  border: none;
+  border-top: 1px solid var(--background-strokes-dark);
+  margin: 0;
+}
+
+/* ─── Body padding ─── */
+.ov-body { padding: 22px 30px 0; }
+
+/* ─── Two-column grid (date/provider then amount/button) ─── */
+.ov-two-col {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0 32px;
+  align-items: center;
+}
+
+/* ─── Section / field labels ─── */
+.ov-field-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 20px 0 8px;
+}
+
+.ov-section-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 20px 0 8px;
+}
+
+/* ─── Info values (date, provider) ─── */
+.ov-info-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.25;
+  padding: 12px 0 6px;
+}
+
+/* ─── YOUR SHARE amount ─── */
+.ov-share-amount {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.05;
+  padding: 14px 0 14px;
+}
+
+/* Pending amount is smaller than dollar amounts */
+.ov-share-amount--pending {
+  font-size: 36px;
+  font-weight: 500;
+  padding: 14px 0 14px;
+}
+
+/* Button col vertically centers with the amount via grid align-items: center */
+.ov-pay-btn-col {
+  display: flex;
+  align-items: center;
+}
+
+.ov-pay-btn {
+  background: var(--background-strokes-blue);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.15s;
+}
+
+.ov-pay-btn:hover { opacity: 0.85; }
+
+/* ─── Service cards ─── */
+.ov-service-card {
+  border: 1px solid var(--background-strokes-card-stroke);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+}
+
+.ov-service-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 26px 18px 18px;
+  cursor: pointer;
+  user-select: none;
+  gap: 16px;
+}
+
+.ov-service-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ov-svc-chevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.ov-service-card.is-open .ov-svc-chevron { transform: rotate(180deg); }
+
+.ov-svc-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.ov-service-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ov-svc-share-label {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.ov-svc-share-amt {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ov-service-detail {
+  display: none;
+  padding: 10px 26px 20px 40px;
+}
+
+.ov-service-card.is-open .ov-service-detail { display: block; }
+
+.ov-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 3px 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.ov-detail-label { color: var(--text-primary); font-weight: 500; }
+.ov-detail-value { color: var(--text-primary); font-weight: 500; }
+
+.ov-svc-notes {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.ov-svc-notes-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+/* ─── Summary rows ─── */
+.ov-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 3px 0;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.ov-summary-label { color: var(--text-primary); font-weight: 500; }
+.ov-summary-value { color: var(--text-primary); font-weight: 600; padding-right: 16px; }
+
+.ov-summary-row--total .ov-summary-label { color: var(--text-primary); font-weight: 500; }
+
+/* ─── Why section card — no background fill ─── */
+.ov-why-card {
+  background: transparent;
+  border: 1px solid var(--background-strokes-card-stroke);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0 0;
+}
+
+.ov-why-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ov-why-cost-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+}
+
+.ov-why-content { flex: 1; min-width: 0; }
+
+.ov-why-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+.ov-why-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.ov-why-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-link);
+  text-decoration: underline;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.ov-why-link:hover { text-decoration: underline; }
+
+/* ─── Plan phase graph image ─── */
+.ov-phase-graph-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 8px;
+}
+.ov-phase-graph--mobile { display: none; }
+
+/* Deductible progress text — mobile only */
+.ov-deductible-progress {
+  display: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+/* ─── Bottom action buttons ─── */
+.ov-actions {
+  padding: 12px 30px 28px;
+  display: flex;
+  gap: 12px;
+}
+
+.ov-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  min-height: 78px;
+  border: 1px solid var(--background-strokes-card-stroke);
+  border-radius: 8px;
+  background: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.35;
+  transition: background 0.15s;
+}
+
+.ov-action-btn:hover { background: var(--background-strokes-light-grey); }
+
+.ov-btn-icon-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--background-strokes-grey);
+  border: 1px solid var(--background-strokes-card-stroke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── Overlay: mobile overrides (must be after base overlay styles) ───────── */
+@media (max-width: 830px) {
+  .overlay-backdrop { padding: 16px 0 40px; }
+  .overlay-panel { width: calc(100% - 32px); max-width: 390px; }
+
+  /* Topbar: 2-row layout — claim# + close on row 1, badges on row 2 */
+  .ov-topbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 8px 12px 16px;
+    gap: 0;
+    row-gap: 8px;
+  }
+  .ov-claim-num { font-size: 16px; order: 1; }
+  .ov-topbar-spacer { order: 2; }
+  .ov-close-btn { order: 3; transform: none; flex-shrink: 0; }
+  .ov-topbar-badges { order: 4; flex-basis: 100%; }
+
+  .ov-close-x { font-size: 22px; line-height: 1; }
+  .ov-close-label { font-size: 11px; margin-top: -2px; }
+
+  /* Body */
+  .ov-body { padding: 0 12px 0; }
+  .ov-two-col { grid-template-columns: 1fr 1fr; gap: 0 12px; }
+
+  /* Labels — very small like Figma */
+  .ov-field-label { font-size: 9px; padding: 12px 0 2px; letter-spacing: 0.08em; }
+  .ov-section-label { font-size: 9px; padding: 12px 0 2px; letter-spacing: 0.08em; }
+
+  /* Date / provider values */
+  .ov-info-value { font-size: 14px; font-weight: 700; padding: 4px 0 4px; }
+
+  /* YOUR SHARE amounts */
+  .ov-share-amount { font-size: 36px; padding: 4px 0 8px; }
+  .ov-share-amount--pending { font-size: 24px; font-weight: 500; padding: 4px 0 8px; }
+
+  /* Pay button */
+  .ov-pay-btn-col { justify-content: flex-end; align-items: center; }
+  .ov-pay-btn { font-size: 11px; font-weight: 700; padding: 8px 10px; }
+
+  /* Service cards */
+  .ov-service-header { padding: 8px 12px; gap: 8px; }
+  .ov-svc-name { font-size: 12px; }
+  .ov-svc-share-label { font-size: 9px; }
+  .ov-svc-share-amt { font-size: 14px; }
+  .ov-service-detail { padding: 6px 12px 14px 28px; }
+  .ov-detail-row { font-size: 13px; line-height: 20px; }
+  .ov-svc-notes { font-size: 12px; }
+  .ov-svc-notes-label { font-size: 13px; }
+
+  /* Summary */
+  .ov-summary-row { font-size: 14px; line-height: 22px; }
+  .ov-summary-value { padding-right: 0; }
+
+  /* Why card */
+  .ov-why-card { padding: 14px; margin: 14px 0 0; }
+  .ov-why-title { font-size: 14px; }
+  .ov-why-text { font-size: 13px; }
+  .ov-why-link { font-size: 13px; }
+
+  /* Actions: stack vertically */
+  .ov-actions { flex-direction: column; padding: 12px 12px 24px; gap: 8px; }
+  .ov-action-btn { flex: 0 0 auto; min-height: 78px; font-size: 16px; }
+
+  /* Plan phase graphic: swap desktop PNG for mobile SVG */
+  .ov-phase-graph--desktop { display: none; }
+  .ov-phase-graph--mobile { display: block; }
+
+  /* Deductible progress text: show on mobile only */
+  .ov-deductible-progress { display: block; }
+
+  /* Footer: headings-only 2×2 grid (must be after base footer styles) */
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 24px 20px 16px;
+    gap: 14px 16px;
+    max-width: 100%;
+  }
+  .footer-col { display: block; }
+  .footer-link { display: none; }
+  .footer-heading {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-link);
+    line-height: 1.4;
+    cursor: pointer;
+  }
+  .footer-heading:hover { text-decoration: underline; }
+  .footer-legal { padding: 12px 20px 20px; }
+  .footer-legal-text { text-align: left; }
+}
