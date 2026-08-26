@@ -96,16 +96,7 @@
       <section class="all-claims">
         <div class="all-claims-header">
           <h2 class="section-title">All claims</h2>
-          <div class="view-toggle" id="view-toggle">
-            <span class="view-toggle-label view-toggle-label--active" id="label-card">Card view</span>
-            <button class="view-toggle-btn" id="view-toggle-btn" aria-label="Switch view">
-              <div class="toggle-icon-stack">
-                <img src="assets/view-list.svg" class="toggle-icon toggle-icon--other" alt="" width="78" height="32">
-                <img src="assets/view-card.svg" class="toggle-icon toggle-icon--current" id="toggle-icon-current" alt="Card view selected" width="78" height="32">
-              </div>
-            </button>
-            <span class="view-toggle-label" id="label-list">List view</span>
-          </div>
+          <div id="view-toggle-mount"></div>
         </div>
 
         <div class="claims-grid" id="claims-grid"></div>
@@ -159,7 +150,6 @@
     </div>
   </div>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

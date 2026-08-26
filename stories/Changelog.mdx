@@ -1,0 +1,74 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import changelogRaw from '../CHANGELOG.md?raw';
+
+<Meta title="Changelog" />
+
+export function renderMarkdown(md) {
+  const escapeHtml = (s) =>
+    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  const inline = (line) => {
+    let s = escapeHtml(line);
+    s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+    s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    return s;
+  };
+
+  const lines = md.split('\n');
+  let html = '';
+  let listOpen = false;
+  let paraBuffer = [];
+
+  const flushPara = () => {
+    if (paraBuffer.length) {
+      html += `<p>${inline(paraBuffer.join(' '))}</p>`;
+      paraBuffer = [];
+    }
+  };
+  const closeList = () => {
+    if (listOpen) {
+      html += '</ul>';
+      listOpen = false;
+    }
+  };
+
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+    if (!line.trim()) {
+      flushPara();
+      closeList();
+      continue;
+    }
+    const heading = line.match(/^(#{1,3})\s+(.*)$/);
+    if (heading) {
+      flushPara();
+      closeList();
+      const level = heading[1].length;
+      html += `<h${level}>${inline(heading[2])}</h${level}>`;
+      continue;
+    }
+    const bullet = line.match(/^-\s+(.*)$/);
+    if (bullet) {
+      flushPara();
+      if (!listOpen) {
+        html += '<ul>';
+        listOpen = true;
+      }
+      html += `<li>${inline(bullet[1])}</li>`;
+      continue;
+    }
+    if (listOpen && /^\s+\S/.test(raw)) {
+      // Indented continuation of the previous bullet — append to its <li>.
+      html = html.replace(/<\/li>$/, ` ${inline(line.trim())}</li>`);
+      continue;
+    }
+    closeList();
+    paraBuffer.push(line.trim());
+  }
+  flushPara();
+  closeList();
+  return html;
+}
+
+<div dangerouslySetInnerHTML={{ __html: renderMarkdown(changelogRaw) }} />

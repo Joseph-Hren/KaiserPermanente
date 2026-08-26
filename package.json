@@ -1,0 +1,19 @@
+{
+  "name": "kaiser-claims-portal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Patient-facing claims portal prototype for Kaiser Permanente, plus its component Storybook.",
+  "scripts": {
+    "dev": "serve . -l 5050",
+    "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build -o storybook-static"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.5.10",
+    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/html-vite": "^10.5.10",
+    "serve": "^14.2.6",
+    "storybook": "^10.5.10"
+  }
+}

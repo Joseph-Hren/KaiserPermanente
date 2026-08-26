@@ -1,4 +1,4 @@
-const ACTIVITY_CARDS = [
+export const ACTIVITY_CARDS = [
   { text: 'Your claim from 6/14/2026 has a $71.00 balance due.', linkText: 'View claim details' },
   { text: 'Your claim from 7/12/2026 is being reviewed by Kaiser.', linkText: 'View claim details' },
   { text: 'Your claim from 5/14/2026 was denied.', linkText: 'View claim details' },
@@ -12,7 +12,7 @@ const ACTIVITY_CARDS = [
   { text: 'Your claim from 2/5/2026 was approved. No balance due.', linkText: 'View claim details' },
 ];
 
-const CLAIMS = [
+export const CLAIMS = [
   {
     id: 1,
     primaryBadge: 'pending', secondaryBadge: null,
@@ -393,4 +393,4 @@ const CLAIMS = [
   }
 ];
 
-const PAGINATION = { total: 31, perPage: 12, current: 1 };
+export const PAGINATION = { total: 31, perPage: 12, current: 1 };

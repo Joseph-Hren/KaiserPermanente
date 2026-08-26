@@ -1,0 +1,161 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview" />
+
+# Kaiser Permanente Claims Portal — Component Library
+
+This Storybook documents the components that make up the [Kaiser Permanente Claims
+Portal](../) prototype: a patient-facing claims experience built as a portfolio piece to
+demonstrate design-systems thinking and an AI-assisted design-to-code workflow. It is not
+an official Kaiser Permanente product.
+
+Every component shown here is the **same code that runs the live prototype** — Storybook
+imports the exact render functions used by `app.js`, so what you see in a story is what
+ships on the site. There are no parallel or duplicated implementations to drift out of
+sync.
+
+**Contents:** [Usage](#usage) · [Design Tokens](#design-tokens) · [Typography](#typography) · [Versioning](#versioning)
+
+## Usage
+
+### File structure
+
+- `components/` — one file per component, each exporting a render function. This is the
+  single source of truth; `app.js` imports directly from here.
+- `stories/` — one `*.stories.js` file per component (controls, states, a11y notes) plus
+  this Overview page.
+- `data.js` — content arrays (claims, activity cards, pagination). Components take this
+  shape in as args; they never import `data.js` directly.
+- `styles.css` — all visual styling, including the design tokens below. Storybook imports
+  this file globally so every story renders with production CSS, not a copy of it.
+
+### Conventions
+
+- **Components are functions that return an HTML string**, matching the existing `app.js`
+  style (`buildX(...)` → now `renderX(...)`). A story mounts one by setting a container's
+  `innerHTML` to the returned string. Components with their own interactivity (e.g. the
+  overlay's accordion) attach their event listeners in a small setup step the story calls
+  after mounting — the same pattern `app.js` already uses.
+- **No inline styles, no invented icons, no placeholder colors.** Same rules as the main
+  project — see the root `CLAUDE.md`. A component that needs a new visual token should
+  get that token added to `styles.css`'s `:root` block, not a one-off hex value.
+- **Every component has JSDoc** on its render function describing params and the shape of
+  data it expects. Because this is plain JS (not TypeScript), Storybook's Controls panel
+  is driven by manually-declared `argTypes` in each story file, not by the JSDoc directly
+  — treat the JSDoc as the reference for engineers reading the source, and the Controls
+  panel as the reference for exploring states interactively.
+- **Accessibility is checked automatically.** Every story runs through the a11y addon
+  (axe-core). Check the "Accessibility" tab in each component's Docs page before
+  considering it done.
+
+### Adding a new component
+
+1. Create `components/MyComponent.js` exporting a `renderMyComponent(props)` function
+   with JSDoc.
+2. Create `stories/MyComponent.stories.js` with `argTypes`, at least one story per
+   visual/interactive state, and a short description in the story's `parameters.docs`.
+3. Wire it into `app.js` by importing from `components/MyComponent.js` — don't
+   reimplement the markup there.
+
+## Design Tokens
+
+Every swatch below reads its value live from `styles.css`'s `:root` block — this page has
+no hardcoded hex values of its own, so it can't drift from the actual tokens components
+use.
+
+export const tokenGroups = [
+  {
+    label: 'Text',
+    tokens: ['--text-primary', '--text-secondary', '--text-reverse', '--text-link'],
+  },
+  {
+    label: 'Background & strokes',
+    tokens: [
+      '--background-strokes-neutral',
+      '--background-strokes-light-grey',
+      '--background-strokes-grey',
+      '--background-strokes-dark',
+      '--background-strokes-card-stroke',
+      '--background-strokes-blue',
+    ],
+  },
+  {
+    label: 'Status — green',
+    tokens: ['--colors-green-background', '--colors-green-border', '--colors-green-text'],
+  },
+  {
+    label: 'Status — red',
+    tokens: ['--colors-red-background', '--colors-red-border', '--colors-red-text'],
+  },
+  {
+    label: 'Status — amber',
+    tokens: ['--colors-amber-background', '--colors-amber-border', '--colors-amber-text'],
+  },
+  {
+    label: 'Status — blue',
+    tokens: ['--colors-blue-background', '--colors-blue-border', '--colors-blue-text'],
+  },
+  {
+    label: 'KP brand',
+    tokens: ['--kp-blue-nav'],
+  },
+];
+
+export const Swatch = ({ name }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '112px' }}>
+    <div
+      style={{
+        width: '48px',
+        height: '48px',
+        borderRadius: '8px',
+        border: '1px solid var(--background-strokes-card-stroke)',
+        background: `var(${name})`,
+        flexShrink: 0,
+      }}
+    />
+    <code style={{ fontSize: '11px', textAlign: 'center', wordBreak: 'break-all' }}>{name}</code>
+  </div>
+);
+
+export const TokenRow = ({ group }) => (
+  <div style={{ marginBottom: '20px' }}>
+    <h4>{group.label}</h4>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+      {group.tokens.map((name) => (
+        <Swatch key={name} name={name} />
+      ))}
+    </div>
+  </div>
+);
+
+{tokenGroups.map((group) => (
+  <TokenRow key={group.label} group={group} />
+))}
+
+## Typography
+
+Font: **Montserrat** (Google Fonts), weights 400 / 500 / 600 / 700.
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+  <span style={{ fontFamily: 'Montserrat', fontWeight: 400 }}>Montserrat 400 — Regular</span>
+  <span style={{ fontFamily: 'Montserrat', fontWeight: 500 }}>Montserrat 500 — Medium</span>
+  <span style={{ fontFamily: 'Montserrat', fontWeight: 600 }}>Montserrat 600 — Semibold</span>
+  <span style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>Montserrat 700 — Bold</span>
+</div>
+
+### Component tokens
+
+| Token | Value |
+| --- | --- |
+| Card border radius | `12px` |
+| Card border | `1px solid var(--background-strokes-card-stroke)` |
+| Card padding | `20px` |
+| Badge border radius | `20px` (fully rounded pill) |
+| Overlay shader | `#000000` at `25%` opacity |
+
+## Versioning
+
+This library follows [Semantic Versioning](https://semver.org/) and is currently at
+**v1.0.0**. See the **Changelog** page (sidebar) for release history, or
+[CHANGELOG.md](https://github.com/Joseph-Hren/KaiserPermanente/blob/main/CHANGELOG.md) in
+the repo once this is pushed to GitHub.
