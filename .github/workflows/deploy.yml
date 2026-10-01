@@ -35,7 +35,11 @@ jobs:
       - name: Assemble site
         run: |
           mkdir -p _site
-          cp index.html styles.css app.js data.js _site/
+          # Publish every root-level page except archived ones.
+          for f in *.html; do
+            [ "$f" = "index-old.html" ] || cp "$f" _site/
+          done
+          cp styles.css app.js data.js _site/
           cp -r assets _site/assets
           cp -r components _site/components
           mkdir -p _site/storybook
